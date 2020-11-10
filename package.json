@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/junkor-1011/reactstrap-ts-test/issues"
   },
-  "homepage": "https://github.com/junkor-1011/reactstrap-ts-test#readme"
+  "homepage": "https://github.com/junkor-1011/reactstrap-ts-test#readme",
+  "dependencies": {
+    "react": "^17.0.1"
+  }
 }
