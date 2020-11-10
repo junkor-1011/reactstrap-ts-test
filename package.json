@@ -1,0 +1,20 @@
+{
+  "name": "reactstrap-ts-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junkor-1011/reactstrap-ts-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junkor-1011/reactstrap-ts-test/issues"
+  },
+  "homepage": "https://github.com/junkor-1011/reactstrap-ts-test#readme"
+}
