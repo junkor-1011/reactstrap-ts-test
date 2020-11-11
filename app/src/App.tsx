@@ -1,6 +1,6 @@
 import React from 'react';
 /* import { Component } from 'react'; */
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './App.css';
 
 
@@ -24,6 +24,31 @@ function executeButtonClicked() {
       return listOptionSelected
     })();
     const testTextArea: string = (document.getElementById("testTextArea") as HTMLInputElement).value;
+    const testRadioSelected = (() => {
+      const radios: any = document.getElementsByName("testRadio");
+      const selected = ((radios) => {
+        let result = null;
+        for (let i = 0; i < radios.length; i++) {
+          const target = radios[i];
+          if (target.checked) {
+            result = target.value;
+          }
+        }
+        return result
+      })(radios);
+      return selected
+    })();
+    const testCheckBoxSelected = (() => {
+      const checkboxs: any = document.getElementsByClassName("testCheckBox");
+      const selectedList: Array<string> = [];
+      for (let i = 0; i < checkboxs.length; i++) {
+        const target = checkboxs[i];
+        if (target.checked) {
+          selectedList.push(target.value);
+        }
+      }
+      return selectedList
+    })();
 
     // read values
     const valueJson: Object = {
@@ -32,6 +57,8 @@ function executeButtonClicked() {
       testSelect: testSelect,
       testSelectMulti: testSelectMulti,
       testTextArea: testTextArea,
+      testRadioSelected: testRadioSelected,
+      testCheckBoxSelected: testCheckBoxSelected,
     };
     console.log(valueJson);
   } catch(e) {
@@ -132,6 +159,8 @@ function App() {
                     <Input
                       type="radio"
                       name="testRadio"
+                      value="radio1"
+                      defaultChecked
                     />{' '}
                     radio1
                   </Label>
@@ -141,6 +170,7 @@ function App() {
                     <Input
                       type="radio"
                       name="testRadio"
+                      value="radio2"
                     />{' '}
                     radio2
                   </Label>
@@ -150,6 +180,7 @@ function App() {
                     <Input
                       type="radio"
                       name="testRadio"
+                      value="radio3"
                       disabled
                     />{' '}
                     radio3 (disabled)
@@ -162,16 +193,35 @@ function App() {
         <Row>
           <Col className="col-4">
             <FormGroup check>
-              <Input type="checkbox" name="testCheckBox1" id="testCheckBox1"/>
+              <Input
+                type="checkbox"
+                className="testCheckBox"
+                name="testCheckBox1"
+                id="testCheckBox1"
+                value="checkbox1"
+              />
               <Label for="testCheckBox1" check>checkbox1</Label>
             </FormGroup>
             <FormGroup check>
-              <Input type="checkbox" name="testCheckBox2" id="testCheckBox2"/>
+              <Input
+                type="checkbox"
+                className="testCheckBox"
+                name="testCheckBox2"
+                id="testCheckBox2"
+                value="checkbox2"
+              />
               <Label for="testCheckBox2" check>checkbox2</Label>
             </FormGroup>
             <FormGroup check>
-              <Input type="checkbox" name="testCheckBox3" id="testCheckBox3" disabled/>
-              <Label for="testCheckBox3" check>checkbox3</Label>
+              <Input
+                type="checkbox"
+                className="testCheckBox"
+                name="testCheckBox3"
+                id="testCheckBox3"
+                value="checkbox3"
+                disabled
+              />
+              <Label for="testCheckBox3" check>checkbox3(disabled)</Label>
             </FormGroup>
           </Col>
         </Row>
@@ -187,6 +237,9 @@ function App() {
                 id="testTextArea"
                 placeholder="for example, description..."
               ></Input>
+              <FormText color="muted">
+                (form-input description can be written here.)
+              </FormText>
             </FormGroup>
           </Col>
         </Row>
