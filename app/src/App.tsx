@@ -1,6 +1,6 @@
 import React from 'react';
 /* import { Component } from 'react'; */
-import { Container, Row, Col, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './App.css';
 
 
@@ -109,7 +109,7 @@ function App() {
                 type="select"
                 name="testSelectMulti"
                 id="testSelectMulti"
-                className="form-control selectpicker"
+                className="form-control"
                 multiple
               >
                 <option>optionA</option>
@@ -123,41 +123,47 @@ function App() {
         </Row>
         <Row>
           <Col className="col-10">
-            <FormGroup tag="fieldset">
-              <legend>Radio Buttons</legend>
-              <FormGroup check>
-                <Label check>
-                  <Input
-                    type="radio"
-                    name="testRadio1"
-                    id="testRadio1"
-                  >
-                  </Input>{' '}
-                  radio1
-                </Label>
+            <Form>
+              {/* <FormGroup tag="fieldset"> */}
+              <FormGroup>
+                <legend>Radio Buttons</legend>
+                <FormGroup check inline>
+                  <Label check>
+                    <Input
+                      type="radio"
+                      name="testRadio1"
+                    />{' '}
+                    radio1
+                  </Label>
+                </FormGroup>
+                <FormGroup check inline>
+                  <Label check>
+                    <Input
+                      type="radio"
+                      name="testRadio2"
+                    />{' '}
+                    radio2
+                  </Label>
+                </FormGroup>
+                <FormGroup check inline disabled>
+                  <Label check>
+                    <Input
+                      type="radio"
+                      name="testRadio3"
+                      disabled
+                    />{' '}
+                    radio3 (disabled)
+                  </Label>
+                </FormGroup>
               </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input
-                    type="radio"
-                    name="testRadio2"
-                    id="testRadio2"
-                  >
-                  </Input>{' '}
-                  radio2
-                </Label>
-              </FormGroup>
-              <FormGroup check disabled>
-                <Label check>
-                  <Input
-                    type="radio"
-                    name="testRadio3"
-                    id="testRadio3"
-                  >
-                  </Input>{' '}
-                  radio3 (disabled)
-                </Label>
-              </FormGroup>
+            </Form>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="col-4">
+            <FormGroup check>
+              <Input type="checkbox" name="testCheckBox" id="testCheckBox"/>
+              <Label for="testCheckBox" check>test checkbox</Label>
             </FormGroup>
           </Col>
         </Row>
