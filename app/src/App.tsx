@@ -131,7 +131,7 @@ function App() {
                   <Label check>
                     <Input
                       type="radio"
-                      name="testRadio1"
+                      name="testRadio"
                     />{' '}
                     radio1
                   </Label>
@@ -140,16 +140,16 @@ function App() {
                   <Label check>
                     <Input
                       type="radio"
-                      name="testRadio2"
+                      name="testRadio"
                     />{' '}
                     radio2
                   </Label>
                 </FormGroup>
-                <FormGroup check inline disabled>
+                <FormGroup check inline>
                   <Label check>
                     <Input
                       type="radio"
-                      name="testRadio3"
+                      name="testRadio"
                       disabled
                     />{' '}
                     radio3 (disabled)
@@ -162,8 +162,16 @@ function App() {
         <Row>
           <Col className="col-4">
             <FormGroup check>
-              <Input type="checkbox" name="testCheckBox" id="testCheckBox"/>
-              <Label for="testCheckBox" check>test checkbox</Label>
+              <Input type="checkbox" name="testCheckBox1" id="testCheckBox1"/>
+              <Label for="testCheckBox1" check>checkbox1</Label>
+            </FormGroup>
+            <FormGroup check>
+              <Input type="checkbox" name="testCheckBox2" id="testCheckBox2"/>
+              <Label for="testCheckBox2" check>checkbox2</Label>
+            </FormGroup>
+            <FormGroup check>
+              <Input type="checkbox" name="testCheckBox3" id="testCheckBox3" disabled/>
+              <Label for="testCheckBox3" check>checkbox3</Label>
             </FormGroup>
           </Col>
         </Row>
