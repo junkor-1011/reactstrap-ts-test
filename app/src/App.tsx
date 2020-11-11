@@ -1,13 +1,197 @@
 import React from 'react';
-import logo from './logo.svg';
+/* import { Component } from 'react'; */
+import { Container, Row, Col, Button, FormGroup, Label, Input } from 'reactstrap';
 import './App.css';
+
+
+function executeButtonClicked() {
+  // just for test.
+  console.log("button clicked.");
+
+  try {
+    const testInput: string = (document.getElementById("testInput") as HTMLInputElement).value;
+    const testDate: string = (document.getElementById("testDate") as HTMLInputElement).value;
+    const testSelect: string = (document.getElementById("testSelect") as HTMLInputElement).value;
+    const testSelectMulti = (() => {
+      const options: any = document.getElementById("testSelectMulti");
+      const listOptionSelected = [];
+      for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        if (option.selected === true) {
+          listOptionSelected.push(option.value);
+        }
+      }
+      return listOptionSelected
+    })();
+    const testTextArea: string = (document.getElementById("testTextArea") as HTMLInputElement).value;
+
+    // read values
+    const valueJson: Object = {
+      testInput: testInput,
+      testDate: testDate,
+      testSelect: testSelect,
+      testSelectMulti: testSelectMulti,
+      testTextArea: testTextArea,
+    };
+    console.log(valueJson);
+  } catch(e) {
+    console.log(e);
+  }
+}
 
 function App() {
   return (
     <div className="App">
-      Hello, World!
+      <Container fluid className="h-100">
+        <Row>
+          <Col>
+            <h2>React Simple Example</h2>
+          </Col>
+        </Row>
+        <hr></hr>
+        <br></br>
+        <Row>
+          <Col className="col-3">
+            <FormGroup>
+              <Label for="testInput">
+                <h5>input</h5>
+              </Label>
+              <Input
+                type="text"
+                name="testInput"
+                id="testInput"
+                placeholder="text"
+                className="form-comtrol"
+              ></Input>
+            </FormGroup>
+          </Col>
+          <Col className="col-3">
+            <FormGroup>
+              <Label for="testDate">
+                <h5>date</h5>
+              </Label>
+              <Input
+                type="date"
+                name="testDate"
+                id="testDate"
+                className="form-control"
+              ></Input>
+            </FormGroup>
+          </Col>
+          <Col className="col-3">
+            <FormGroup>
+              <Label for="testSelect">
+                <h5>select</h5>
+              </Label>
+              <Input
+                type="select"
+                name="testSelect"
+                id="testSelect"
+                className="form-comtrol"
+              >
+                {
+                  // JUST FOR TEST
+                  Array.from(Array(10), (v, k) => k).map((v, i) => (
+                    <option key={i}>option{v}</option>
+                  ))
+                }
+              </Input>
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="col-6">
+            <FormGroup>
+              <Label for="testSelectMulti">
+                <h5>select(multiple)</h5>
+              </Label>
+              <Input
+                type="select"
+                name="testSelectMulti"
+                id="testSelectMulti"
+                className="form-control selectpicker"
+                multiple
+              >
+                <option>optionA</option>
+                <option>optionB</option>
+                <option>optionC</option>
+                <option>optionD</option>
+                <option>optionE</option>
+              </Input>
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="col-10">
+            <FormGroup tag="fieldset">
+              <legend>Radio Buttons</legend>
+              <FormGroup check>
+                <Label check>
+                  <Input
+                    type="radio"
+                    name="testRadio1"
+                    id="testRadio1"
+                  >
+                  </Input>{' '}
+                  radio1
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input
+                    type="radio"
+                    name="testRadio2"
+                    id="testRadio2"
+                  >
+                  </Input>{' '}
+                  radio2
+                </Label>
+              </FormGroup>
+              <FormGroup check disabled>
+                <Label check>
+                  <Input
+                    type="radio"
+                    name="testRadio3"
+                    id="testRadio3"
+                  >
+                  </Input>{' '}
+                  radio3 (disabled)
+                </Label>
+              </FormGroup>
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="col-9">
+            <FormGroup>
+              <Label for="testTextArea">
+                <h5>Test TextArea</h5>
+              </Label>
+              <Input
+                type="textarea"
+                name="testTextArea"
+                id="testTextArea"
+                placeholder="for example, description..."
+              ></Input>
+            </FormGroup>
+          </Col>
+        </Row>
+        <hr></hr>
+        <br></br>
+        <Row>
+          <Col>
+            <Button
+              color="primary"
+              size="lg"
+              onClick={executeButtonClicked}
+            >Execute</Button>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
+
+console.log("log from outer App.");
 
 export default App;
